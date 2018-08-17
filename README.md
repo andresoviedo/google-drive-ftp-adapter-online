@@ -2,8 +2,6 @@
 
 Connect your FTP Client to Google Drive with this Online Webservice.
 
-![codeship badge](https://app.codeship.com/projects/78bbc6c0-83ef-0136-bf62-06294081aa1e/status?branch=master)
-
 # https://ftpdrive.andresoviedo.org/
 
 ![alt tag](/docs/google-drive-ftp-adapter-online-logo.png)
