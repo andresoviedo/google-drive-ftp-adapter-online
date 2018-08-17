@@ -140,6 +140,8 @@
             <groupId>org.andresoviedo</groupId>
             <artifactId>google-drive-ftp-adapter</artifactId>
             <version>1.6.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/google-drive-ftp-adapter-jar-with-dependencies.jar</systemPath>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
