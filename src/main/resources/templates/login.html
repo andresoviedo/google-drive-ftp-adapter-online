@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="_layout">
+<head>
+    <style>
+
+        .mdl-layout__content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            flex-direction : column;
+            text-align : center;
+        }
+
+        #error {
+            color : red;
+            display : none;
+        }
+
+        #loginForm {
+            display:flex;
+            flex-direction:column;
+            justify-content: center;
+            padding : 10px;
+            background-color: #ffffff;
+            border-radius: 5%;
+        }
+
+        .buttons {
+            justify-content: right;
+            flex: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div layout:fragment="content">
+        <!-- One "tab" for each step in the form: -->
+        <form id="loginForm" th:action="@{/login}" method="post" onsubmit="return validateForm('loginForm')">
+
+            <h2>Login</h2>
+
+            <span id="error"></span>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input type="text" id="username" name="username" class="mdl-textfield__input"
+                       pattern="^[A-Z,a-z,0-9]{5,}$" oninput="this.classList.remove('invalid')">
+                <label class="mdl-textfield__label" for="username">username</label>
+                <span class="mdl-textfield__error">Please enter a valid username: [A-Z,a-z,0-9]{5,50}</span>
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input type="password" id="password" name="password" pattern="^.{8,50}$"
+                       class="mdl-textfield__input"  oninput="this.classList.remove('invalid')">
+                <label class="mdl-textfield__label" for="password">password</label>
+                <span class="mdl-textfield__error">Please enter a valid password: .{8,50}</span>
+            </div>
+
+            <div class="buttons">
+                <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                       value="Login"/>
+            </div>
+        </form>
+        <hr/>
+        <form name="google-loginForm" th:action="@{/login}" method="post">
+            Sign in with google:
+            <div id="g-signin2" class="g-signin2" style="display:inline-block" data-onsuccess="onSignIn"
+             data-theme__="dark"></div>
+            <!--<input type="hidden"  th:name="${_csrf.parameterName}"  th:value="${_csrf.token}"/>-->
+            <input type="hidden" name="username">
+            <input type="hidden" name="password">
+        </form>
+        <hr/>
+        <a th:href="@{/register}">Register new account</a>
+    </div>
+</body>
+</html>

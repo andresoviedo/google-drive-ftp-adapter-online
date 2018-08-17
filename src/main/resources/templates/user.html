@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+
+<head>
+    <style>
+        .mdl-layout__content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: top;
+            align-items: center;
+            flex-direction : column;
+            text-align : center;
+        }
+    </style>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <h1>Google Drive Authorization</h1>
+
+    <div th:if="${drive_auth != null}">
+        <h2>Status: access granted</h2>
+        <form th:action="@{/google-drive/delete}" method="post">
+            <input type="hidden" name="callback" th:value="@{/user}"/>
+            <input type="submit" value="Delete Authorization"
+                   class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"/>
+        </form>
+
+        <h1>FTP Login</h1>
+        <div th:if="${ftp_user == null}">
+            <h2>Create FTP user</h2>
+            <form th:action="@{/user/addftpuser}" method="post">
+                <input type="text" name="username" value=""/>
+                <input type="password" name="password" value=""/>
+                <input type="submit" value="Add FTP User"
+                       class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"/>
+            </form>
+        </div>
+
+        <div th:if="${ftp_user != null}">
+            <h2>Status : FTP User created "<span th:text="${ftp_user.ftpusername}"></span>"</h2>
+            <form th:action="@{/user/deleteftpuser}" method="post">
+                <input type="submit" value="Delete FTP User"
+                       class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"/>
+            </form>
+        </div>
+    </div>
+
+    <div th:if="${drive_auth == null}">
+        <h2>Get started</h2>
+
+        <h3>First step is to grant application authorization to access google drive</h3>
+        <form th:action="@{/drive-login/}">
+            <input type="hidden" name="callback" th:value="@{/user}"/>
+            <input type="submit" value="Grant Authorization"
+                   class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"/>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

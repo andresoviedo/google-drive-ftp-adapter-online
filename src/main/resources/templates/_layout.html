@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>google-drive-ftp-adapter-online</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="descripton" content="Google Drive FTP Adapter to connect FTP clients to Google Drive">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- social networks -->
+    <meta property="og:title" content="Google Drive FTP Adapter" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ftpdrive.andresoviedo.org" />
+    <meta property="og:image" content="https://ftpdrive.andresoviedo.org/icon.jpg" />
+    <meta property="og:description" content="Google Drive FTP Adapter to connect FTP clients to Google Drive" />
+
+    <!-- cache -->
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" />
+
+    <!-- responsive? -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id"
+          content="275751503302-dl2bmgru2varjibm3vf12fk4m71onbib.apps.googleusercontent.com">
+
+    <!-- material -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <!-- github button -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- custom styles -->
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" th:href="@{/css/google.css}"/>
+
+    <!-- custom library -->
+    <script th:src="@{/js/util.js}"></script>
+    <script th:src="@{/js/google.js}"></script>
+
+    <!-- googledrive sign-in -->
+    <script src="https://apis.google.com/js/platform.js?onload=googleInit" async defer></script>
+
+    <script>
+
+        function init(){
+
+            fixMaterialInputs();
+
+            processParams('dialog', undefined, undefined);
+        }
+
+    </script>
+
+</head>
+<body onload="init()" class="mdl-color--grey-100">
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header app-layout__align-middle">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <a class="mdl-layout-title" th:href="@{/}" style="color:white; text-decoration:none">google drive ftp adapter</a>
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+
+            <nav th:if="false" class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" th:href="@{/about}">About</a>
+                <a class="mdl-navigation__link" th:href="@{/contact}">Contact</a>
+            </nav>
+
+            <!-- Add spacer, to align navigation to the right -->
+            <div sec:authorize="isAuthenticated()" class="mdl-layout-spacer"></div>
+
+            <!-- home -->
+            <a class="mdl-navigation__link" th:href="@{/}">Home</a>
+
+            <!-- current user -->
+            <a th:href="@{/account}" sec:authorize="isAuthenticated()" sec:authentication="name" class="mdl-navigation__link"></a>
+
+            <!-- custom buttons set by each page -->
+            <div layout:fragment="menu"></div>
+
+            <!-- login / logout buttons -->
+            <!-- a id="signout-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" href="#"
+               onclick="googleSignOut();">Sign out</a -->
+
+            <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post" onsubmit="googleSignOut()">
+                <input type="submit" value="Logout"
+                       class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"/>
+            </form>
+
+            <!-- Place this tag where you want the button to render. -->
+            <div sec:authorize="!isAuthenticated()" class="mdl-layout--large-screen-only__">
+                <a class="github-button" href="https://github.com/andresoviedo/google-drive-ftp-adapter-online"
+                   data-size="large" aria-label="View it on GitHub">GitHub</a>
+            </div>
+        </div>
+    </header>
+    <!-- div style="width:100%" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div -->
+    <!-- div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+    </div -->
+    <main class="mdl-layout__content" layout:fragment="content">
+
+    </main>
+</div>
+<dialog id="dialog" class="mdl-dialog">
+    <h4 class="mdl-dialog__title"></h4>
+    <div class="mdl-dialog__content">
+    </div>
+    <div class="mdl-dialog__actions">
+        <button type="button" class="mdl-button close">Close</button>
+    </div>
+</dialog>
+
+</body>
+</html>

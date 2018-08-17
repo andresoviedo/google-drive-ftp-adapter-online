@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="_layout">
+<head>
+    <style>
+        .mdl-layout__content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: top;
+            align-items: center;
+            flex-direction : column;
+            text-align : center;
+        }
+    </style>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <h1>Account</h1>
+    <h2>email : <span th:text="${userDetails.email}"></span></h2>
+
+    <h2>Delete Account</h2>
+    <h3>Attention: All data will be deleted and you will be signed of</h3>
+    <form th:action="@{/account/delete}" method="post">
+        <input type="submit" value="Delete Account" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"/>
+    </form>
+</div>
+
+</body>
+</html>

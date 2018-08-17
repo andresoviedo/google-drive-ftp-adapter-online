@@ -1,0 +1,12 @@
+#signout-button {
+    display: none;
+ }
+
+ #signin-button {
+     display: block;
+ }
+
+ #g-signin2 {
+     display: visible;
+     vertical-align: middle;
+ }

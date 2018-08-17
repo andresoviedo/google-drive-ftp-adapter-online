@@ -1,0 +1,71 @@
+#debug: true
+
+server:
+  port: ${PORT:8080}
+
+messages:
+  home: Hello, Memorynotfound!
+
+spring:
+  datasource:
+    url: jdbc:h2:./bbdd
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    initialization-mode: always
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  session:
+    store-type: jdbc
+  thymeleaf:
+    cache: false
+    check-template: true
+    check-template-location: true
+    content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    # excluded-view-names:
+    # mode: HTML5
+    # prefix: /templates/
+    # suffix: .html
+    # template-resolver-order:
+    # view-names:
+
+logging:
+  pattern:
+    #console:
+  #file: app.log
+  level:
+    #root: debug
+    org.andresoviedo: debug
+    org.andresoviedo.google_drive_ftp_adapter: info
+    org.apache.mina : error
+    org.apache.ftpserver : error
+    org.springframework.security: info
+
+
+---
+
+spring:
+  profiles: production
+  datasource:
+    password: ${PASSWORD}
+
+
+server:
+  port: ${PORT:8443}
+  ssl.key-store: keystore.p12
+  ssl.key-store-password: ${PASSWORD}
+  ssl.keyStoreType: PKCS12
+  ssl.keyAlias: ftpdrive
+
+logging:
+  pattern:
+    #console:
+  file: app.log

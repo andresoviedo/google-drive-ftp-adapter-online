@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="_layout">
+<head>
+    <style>
+
+        .mdl-layout__content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            flex-direction : column;
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            flex-direction : row;
+        }
+
+        .buttons > form {
+            display:inline;
+        }
+
+        img.gdfa-logo {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="mdl-typography--display-3">Google Drive FTP Adapter</div>
+
+        <div class="mdl-typography--display-1">Connect your ftp client to google drive</div>
+
+        <img class="gdfa-logo" th:src="@{/img/gdfa-components.png}"></img>
+
+        <div sec:authorize="!isAuthenticated()" class="buttons">
+            <form th:action="@{/login}">
+                <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored app-super-button" value="Sign In"></input>
+            </form>
+
+            <form th:action="@{/register}">
+                <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent app-super-button" value="Register"></input>
+            </form>
+        </div>
+        <div sec:authorize="isAuthenticated()" class="buttons">
+            <form th:action="@{/login}">
+                <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored app-super-button" value="Get Started"></input>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
