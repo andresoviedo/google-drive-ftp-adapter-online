@@ -2,11 +2,23 @@
 
 Connect your FTP Client to Google Drive with this Online Webservice.
 
-# https://ftpdrive.andresoviedo.org/
-
 ![alt tag](/docs/google-drive-ftp-adapter-online-logo.png)
 
-If you prefer, you can also host your own service.
+
+# Public Service
+
+This application has been deployed as a public online service on Internet
+
+https://ftpdrive.andresoviedo.org/
+
+However, Google has disapproved this project and has flagged the domain.  I don't know the reasons.
+
+![alt tag](/docs/google-unauthorization.png)
+
+![alt tag](/docs/google-deceptive-site-ahead.png)
+
+However, you can still deploy the application in your own network with your own API key.
+
 
 # Getting started
 
@@ -16,11 +28,15 @@ If you prefer, you can also host your own service.
 4. Open your FTP client and connect to host "ftpdrive.andresoviedo.org" and port "50000"
 5. Enjoy :)
 
+You can replace *ftpdrive.andresoviedo.org* with your own domain.
+
+
 # FTP / FTPs
 
 The google-drive-ftp-adapter-online service offers FTP and FTPs as well.
 * FTPs is the recommended connection protocol (encrypted data transfers)
 * FTP is an insecure protocol. Use it at your own risk
+
 
 # Stack
 
@@ -36,6 +52,7 @@ Application is a SBA (built on top of Spring Boot)
 * Thymeleaf / layouts
 * Material getmdl
 * Java 8
+
 
 # Features
 
