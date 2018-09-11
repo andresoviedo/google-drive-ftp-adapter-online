@@ -3,7 +3,6 @@ package org.andresoviedo.gdfao.user;
 import org.andresoviedo.gdfao.drive.repository.DriveAuthorizationRepository;
 import org.andresoviedo.gdfao.security.model.UserDetails;
 import org.andresoviedo.gdfao.security.repository.UserDetailsRepository;
-import org.andresoviedo.gdfao.security.repository.UserRepository;
 import org.andresoviedo.gdfao.user.domain.FtpUserRegisterForm;
 import org.andresoviedo.gdfao.user.model.FtpUser;
 import org.andresoviedo.gdfao.user.repository.FtpUsersRepository;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -41,6 +39,10 @@ public class UserController {
     public String user(Principal principal, Model model) {
 
         final UserDetails userDetails = userDetailsRepository.findByUsername(principal.getName());
+        if  (!userDetails.isTerms()){
+            return "redirect:/terms";
+        }
+
         final String email = userDetails.getEmail();
 
         model.addAttribute("drive_auth",authorizationRepository.findById(email));
@@ -55,6 +57,10 @@ public class UserController {
     public String addftpuser(@Valid FtpUserRegisterForm userRegisterForm, Principal principal, Model model){
 
         final UserDetails userDetails = userDetailsRepository.findByUsername(principal.getName());
+        if  (!userDetails.isTerms()){
+            return "redirect:/terms";
+        }
+
         final String email = userDetails.getEmail();
 
         if (ftpUsersRepository.existsById(email)){

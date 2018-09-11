@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml"
       layout:decorate="_layout">
 
@@ -7,6 +8,9 @@
 
 <div layout:fragment="content">
     <h1>Admin Panel</h1>
+    <ul>
+        <li><a th:href="@{/admin/email}">Email</a></li>
+    </ul>
 </div>
 
 </body>

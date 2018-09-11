@@ -83,13 +83,7 @@ function validateForm(formId) {
     // A loop that checks every input field in the current tab:
     for (i = 0; i < y.length; i++) {
         // If a field is empty...
-        if (y[i].value == "") {
-          // add an "invalid" class to the field:
-          y[i].className += " invalid";
-          // and set the current valid status to false
-          valid = false;
-        }
-        else if (y[i].getAttribute("pattern")){
+        if (y[i].getAttribute("pattern")){
             var pattern = new RegExp(y[i].getAttribute("pattern"));
             var match = y[i].value.match(pattern);
             if (!match){
@@ -98,6 +92,8 @@ function validateForm(formId) {
                 // and set the current valid status to false
                 valid = false;
             }
+        } else if (y[i].getAttribute("type")=='checkbox' && y[i].getAttribute("required") && !y[i].checked){
+            valid = false;
         }
         if (!valid){
             y[i].focus();
@@ -167,6 +163,12 @@ function processAlert(dialogId, messageId, title){
         } else if (message == 'ftp_user_already_exists'){
             title = 'Request failed';
             message = 'FTP User already registered';
+        } else if (message == 'terms'){
+            title = 'Registration failed';
+            message = 'You must accept terms and conditions';
+        } else if (message == 'no'){
+            title = 'Information';
+            message = 'Action not executed';
         }
     } else if (params.logout != undefined){
         title = title || 'Logout'

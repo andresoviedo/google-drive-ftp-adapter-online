@@ -5,8 +5,8 @@ import com.google.api.client.auth.oauth2.AuthorizationCodeResponseUrl;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.servlet.auth.oauth2.AbstractAuthorizationCodeCallbackServlet;
 import com.google.api.client.http.GenericUrl;
-import org.andresoviedo.gdfao.drive.repository.DriveAuthorizationRepository;
 import org.andresoviedo.gdfao.drive.model.DriveAuthorization;
+import org.andresoviedo.gdfao.drive.repository.DriveAuthorizationRepository;
 import org.andresoviedo.gdfao.security.model.UserDetails;
 import org.andresoviedo.gdfao.security.repository.UserDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.Enumeration;
 import java.util.logging.Logger;
 
 @Service("drive-login-oauth2callback")

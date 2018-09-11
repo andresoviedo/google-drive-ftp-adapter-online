@@ -33,9 +33,9 @@
         <h1>FTP Login</h1>
         <div th:if="${ftp_user == null}">
             <h2>Create FTP user</h2>
-            <form th:action="@{/user/addftpuser}" method="post">
-                <input type="text" name="username" value=""/>
-                <input type="password" name="password" value=""/>
+            <form id="regFtpUser" th:action="@{/user/addftpuser}" method="post" onsubmit="return validateForm('regFtpUser')">
+                Username (min 5 chars): <input type="text" name="username" value="" required pattern="^.{5,50}$"/>
+                Password (min 8 chars): <input type="password" name="password" value="" required pattern="^.{8,50}$"/>
                 <input type="submit" value="Add FTP User"
                        class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"/>
             </form>

@@ -85,6 +85,9 @@
             <!-- home -->
             <a class="mdl-navigation__link" th:href="@{/}">Home</a>
 
+            <!-- help -->
+            <a class="mdl-navigation__link" th:href="@{/help}">Help</a>
+
             <!-- current user -->
             <a th:href="@{/account}" sec:authorize="isAuthenticated()" sec:authentication="name" class="mdl-navigation__link"></a>
 

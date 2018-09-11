@@ -1,7 +1,6 @@
 package org.andresoviedo.gdfao.config;
 
 import ch.qos.logback.classic.LoggerContext;
-import org.andresoviedo.gdfao.drive.GoogleDriveFtpAdapter;
 import org.andresoviedo.util.email.MailInfoBean;
 import org.andresoviedo.util.log.EmailLogbackAppender;
 import org.apache.commons.logging.Log;
@@ -9,19 +8,12 @@ import org.apache.commons.logging.LogFactory;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContextInitializer;
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.annotation.Order;
 
 import javax.annotation.PreDestroy;
-import java.io.Console;
 import java.util.concurrent.TimeUnit;
 
 @Order(1)

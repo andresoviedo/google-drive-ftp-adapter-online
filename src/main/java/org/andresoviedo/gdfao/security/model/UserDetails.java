@@ -17,7 +17,16 @@ public class UserDetails {
     @JoinColumn(name = "username")
     private User user;
 
+    private Boolean terms;
+
     public UserDetails() {
+    }
+
+    public UserDetails(User user, String email, Boolean isTerms) {
+        this.username = user.getUsername();
+        this.user = user;
+        this.email = email;
+        this.terms = isTerms;
     }
 
     public UserDetails(User user, String email) {
@@ -48,5 +57,13 @@ public class UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setTerms(Boolean isTerms) {
+        this.terms = isTerms;
+    }
+
+    public Boolean isTerms() {
+        return terms != null && terms;
     }
 }

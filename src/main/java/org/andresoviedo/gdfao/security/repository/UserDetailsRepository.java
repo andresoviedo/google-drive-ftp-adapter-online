@@ -17,4 +17,6 @@ public interface UserDetailsRepository extends Repository<UserDetails, String> {
     boolean existsByEmail(String email);
 
     void deleteByEmail(String email);
+
+    List<UserDetails> findAll();
 }

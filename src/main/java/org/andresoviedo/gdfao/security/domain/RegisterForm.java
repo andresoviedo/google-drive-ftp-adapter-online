@@ -17,6 +17,8 @@ public final class RegisterForm {
     @Size(min = 5, max = 50)
     private String email;
 
+    private boolean terms;
+
     public String getUsername() {
         return username;
     }
@@ -39,5 +41,13 @@ public final class RegisterForm {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setTerms(boolean terms) {
+        this.terms = terms;
+    }
+
+    public boolean isTerms() {
+        return terms;
     }
 }

@@ -88,7 +88,7 @@ public class GoogleLoginController {
                 Collections.singletonList(authoritiesRepository.findById(AuthoritiesRepository.ROLE_USER)));
             userRepository.save(user);
 
-            UserDetails userDetails = new UserDetails(user, validatedEmail);
+            UserDetails userDetails = new UserDetails(user, validatedEmail, true);
             userDetailsRepository.save(userDetails);
 
             // google user registered

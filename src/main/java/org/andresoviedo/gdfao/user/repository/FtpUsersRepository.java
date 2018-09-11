@@ -1,6 +1,5 @@
 package org.andresoviedo.gdfao.user.repository;
 
-import org.andresoviedo.gdfao.drive.model.DriveAuthorization;
 import org.andresoviedo.gdfao.user.model.FtpUser;
 import org.springframework.data.repository.Repository;
 

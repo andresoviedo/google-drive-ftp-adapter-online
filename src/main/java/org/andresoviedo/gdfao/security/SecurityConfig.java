@@ -16,32 +16,16 @@
 
 package org.andresoviedo.gdfao.security;
 
-import org.andresoviedo.gdfao.security.model.Authority;
-import org.andresoviedo.gdfao.security.model.User;
-import org.andresoviedo.gdfao.security.model.UserDetails;
-import org.andresoviedo.gdfao.security.repository.AuthoritiesRepository;
-import org.andresoviedo.gdfao.security.repository.UserDetailsRepository;
-import org.andresoviedo.gdfao.security.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.sql.DataSource;
-import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.logging.Logger;
 
 /**

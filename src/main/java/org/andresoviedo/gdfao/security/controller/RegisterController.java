@@ -65,10 +65,14 @@ public class RegisterController {
         final String username = registerForm.getUsername();
         final String password = registerForm.getPassword();
         final String email = registerForm.getEmail();
+        final boolean isTerms = registerForm.isTerms();
 
         try {
             final String errorCode;
-            if (username.equalsIgnoreCase(password)) {
+            if (!isTerms) {
+                logger.warning("Attempt to register without accepting terms");
+                errorCode = "terms";
+            } else if (username.equalsIgnoreCase(password)) {
                 logger.warning("Attempt to register with username=password");
                 errorCode = "invalid-password";
             } else if (username.toLowerCase().contains(password.toLowerCase())) {
@@ -96,7 +100,7 @@ public class RegisterController {
                     Collections.singletonList(authoritiesRepository.findById(AuthoritiesRepository.ROLE_USER)));
             user = userRepository.save(user);
 
-            UserDetails userDetails = new UserDetails(user, email);
+            UserDetails userDetails = new UserDetails(user, email, isTerms);
             userDetailsRepository.save(userDetails);
 
             // authenticate to save in session by security filter (HttpSessionSecurityContextRepository)

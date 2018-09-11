@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="_layout">
+<head>
+    <style>
+
+        .mdl-layout__content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            flex-direction : column;
+            text-align : center;
+        }
+
+        #termsForm {
+            display:flex;
+            flex-direction:column;
+            justify-content: center;
+            padding : 10px;
+            background-color: #ffffff;
+            border-radius: 5%;
+        }
+
+        .buttons {
+            justify-content: right;
+            flex: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div layout:fragment="content">
+        <!-- One "tab" for each step in the form: -->
+        <form id="termsForm" th:action="@{/terms}" method="post" onsubmit="return validateForm('termsForm')">
+
+            <h2>Terms Of Service</h2>
+
+            <span id="error"></span>
+
+            <p>In order to continue, you must read and accept the Privacy Policy and Terms of Service.</p>
+
+            <div>
+                <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                       for = "terms">
+                    <input type = "checkbox" id = "terms" name="terms" class = "mdl-checkbox__input" value="true" required>
+                    <span class = "mdl-checkbox__label">I agree to the <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-and-conditions">Terms of Service</a></span>
+                </label>
+            </div>
+
+            <br/>
+
+            <div class="buttons">
+                <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                       value="Accept"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

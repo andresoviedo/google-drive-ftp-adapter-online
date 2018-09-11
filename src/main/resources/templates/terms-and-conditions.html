@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <style>
+
+        .mdl-layout__container {
+            height: auto;
+            text-align: left;
+        }
+
+    </style>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <h1>Terms And Conditions</h1>
+
+    <p>Effective date: September 10, 2018</p>
+
+    <h2>Summary</h2>
+
+    google-drive-ftp-adater-online is an open source project. It is a web application allowing you to connect your ftp
+    client to your Google Drive account. This website offers that web application as an ONLINE FREE SERVICE available
+    publicly on Internet. The only aim of this website is to provide a free service.
+	
+	<p>Please be sure to understand the following</p>
+    
+    <p>We use your email for 2 reasons: As a username to login to the website and only if needed, as a way to
+        communicate about any issue concerning the application like changes to this privacy policy or security
+        information. Your email will be never used to send you spam or any commercial data. You can delete completely your account yourself including all your personal data at any time.</p>
+    <p>The application uses a Google Drive Authorization Token (this is not your google username or password). This is a file containing a String allowing the application to connect to your Google Drive account on your behalf, only when you are connected to the FTP Service. You can revoke this authorization at any time yourself.<p>
+    <p>The application stores the list of your Google Drive files but not the binary content. It means that if you have a file named "your-picture.jpg" or any other file, the application will save into the application's database the path and the
+        name of that file (e.g. "/your-folder-name/your-picture.jpg"), but it wil never store the picture itself or any
+        binary content. The only purpose for caching this list is for perfomance reasons, in order to provide
+        the functionality of this service. This information will be downloaded to application's database the first
+        time you connect your ftp client to the Service. You will have the option to delete completely this data by
+        sending an email to ftpdrive@andresoviedo.org or by deleting your account.
+    <p>
+    <p>The FTP user is a user you create yourself in the application to allow FTP clients to connect to your
+        google-drive-ftp-adapter-online account, therefore to your Google Drive account. This FTP user should be configured with a username and password different than your Google Credentials or the google-drive-ftp-adapter-online Credentials. For example, you can crate a user "myftpuser" with password "mysecretpassword". You can delete this ftp user yourself at any time. It is your only reponsability to manage that user. We don't assume any responsability derived from the misuse of the FTP user.</p>
+    <p>If you register and you don't use the ftp service for a period of 1 year your data will be deleted. An email will
+        be sent to you prior to deletion. You will have the option to respond to that email with a consent to mantain
+        your data for 1 more year.</p>
+	<p>This Service uses a free tier for the Google Drive API and it could be unavailable at any time.</p>
+	<p>This Service is free and is mantained with no financial support. The Service could be unavailable at any time.</p>
+    <p>If you have any questions regarding this document please send an email to ftpdrive@andresoviedo.org.</p>
+
+    <h2>Disclaimer</h2>
+    This service is provided as it is and we don't assume any misuse or responsibility derived from the use of this
+    website. We will however, make the most to make this site as secure as possible.
+
+    <h2>Privacy Policy</h2>
+    <p>First of all, be sure to have read the Privacy Policy. In general, the private data we collect will be by no means shared to any body. This information will be only used to provide you the Service.</p>
+
+    <h2>Transfer Of Data</h2>
+    <p>The application data will be stored and processed on computers located in Germany.</p>
+
+    <h2>Security of Data</h2>
+    <p>The security of your data is important to us but remember that no method of transmission over the Internet or
+        method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect
+        your Personal Data, we cannot guarantee its absolute security.</p>
+
+    <h2>FTP Protocol</h2>
+        The Service provides 2 methods to connect your FTP client to the Service, either using unencrypted FTP or
+        encrypted FTPS. FTP IS NOT A SECURE PROTOCOL because data is transferred with no encryption, while FTPS IS A
+        SECURE PROTOCOL because data is sent through an encrypted connection. We recommend to use FTPS as it is secure
+        and less probably to intercepted by a MAN-IN-THE-MIDDLE attack. In any case, we don't assume any responsability
+        derived from the use of any of these protocols.
+
+
+        <h2>Changes to This Terms And Conditions</h2>
+        <p>We may update our Terms And Conditions from time to time. We will notify you of any changes by posting the new
+            Terms And Conditions on this page.</p>
+        <p>We will let you know via email and/or a prominent notice on our Service, prior to the change becoming
+            effective and update the "effective date" at the top of this Terms And Conditions.</p>
+        <p>You are advised to review this Terms And Conditions periodically for any changes. Changes to this Terms And Conditions are effective when they are posted on this page.</p>
+
+        <h2>Your Rights</h2>
+        <ul>
+            <li>Right to be informed: You will be informed of every change made to this policy and/or use of your
+                personal data or any detected security breach in our system.
+            </li>
+            <li>Right to rectification: You have the right to request modification to your personal data</li>
+            <li>Right to erasure: You have the right to request deletion of your data or account</li>
+        </ul>
+
+        <h2>Contact Us</h2>
+        <p>If you have any questions about this Terms And Conditions, please contact us:</p>
+        <ul>
+            <li>By email: ftpdrive@andresoviedo.org</li>
+
+        </ul>
+</div>
+</body>
+</html>

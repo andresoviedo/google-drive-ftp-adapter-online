@@ -2,6 +2,8 @@ package org.andresoviedo.gdfao.drive;
 
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.Credential;
+import org.andresoviedo.gdfao.security.model.UserDetails;
+import org.andresoviedo.gdfao.security.repository.UserDetailsRepository;
 import org.andresoviedo.gdfao.user.model.FtpUser;
 import org.andresoviedo.gdfao.user.repository.FtpUsersRepository;
 import org.andresoviedo.google_drive_ftp_adapter.controller.Controller;
@@ -34,7 +36,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.File;
 import java.util.*;
@@ -49,6 +50,9 @@ public class GoogleDriveFtpAdapter extends FtpServerFactory implements FileSyste
 
     @Autowired
     private AuthorizationCodeFlow flow;
+
+    @Autowired
+    private UserDetailsRepository userDetailsRepository;
 
     @Autowired
     private FtpUsersRepository ftpUsersRepository;
@@ -193,6 +197,10 @@ public class GoogleDriveFtpAdapter extends FtpServerFactory implements FileSyste
         FtpUser ftpUser = ftpUsersRepository.findByFtpusername(username);
         if (ftpUser == null){
             return null;
+        }
+        final List<UserDetails> userDetails = userDetailsRepository.findByEmail(ftpUser.getId());
+        if  (userDetails == null || userDetails.isEmpty() || !userDetails.get(0).isTerms()){
+            throw new Exception("User "+username+" has not accepted terms & conditions");
         }
         // maybe this is redundant, but just to be sure
         if (ftpUser.getFtpusername() == null || ftpUser.getFtpusername().length() == 0

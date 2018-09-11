@@ -7,6 +7,7 @@ import org.andresoviedo.gdfao.security.model.UserDetails;
 import org.andresoviedo.gdfao.security.repository.AuthoritiesRepository;
 import org.andresoviedo.gdfao.security.repository.UserDetailsRepository;
 import org.andresoviedo.gdfao.security.repository.UserRepository;
+import org.andresoviedo.util.email.MailInfoBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -61,6 +62,7 @@ public class AppConfig extends WebSecurityConfigurerAdapter implements CommandLi
 
                 // app
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .antMatchers("/terms").hasAnyRole("USER")
                 .antMatchers("/user/**").hasAnyRole("USER")
                 .antMatchers("/account/**").hasAnyRole("USER")
 
@@ -76,6 +78,16 @@ public class AppConfig extends WebSecurityConfigurerAdapter implements CommandLi
                 .logout().logoutSuccessUrl("/?logout");
 
         logger.info("Http security configured");
+    }
+
+    @Bean
+    public MailInfoBean mailInfo(){
+        final MailInfoBean mailInfo = new MailInfoBean("smtp.1and1.es", 587, "ftpdrive@andresoviedo.org",
+                System.getProperty("PASSWORD"), "\"Google Drive FTP Adapter\" <ftpdrive@andresoviedo.org>",
+                "ftpdrive@andresoviedo.org", "Google Drive FTP Drive Message", null);
+        mailInfo.setHTMLMessage(true);
+        mailInfo.setUseTLS(true);
+        return mailInfo;
     }
 
     @Transactional

@@ -22,11 +22,19 @@
     <h1>Account</h1>
     <h2>email : <span th:text="${userDetails.email}"></span></h2>
 
+    <!-- privacy policy -->
+    <h4><a class="mdl-navigation__link" th:href="@{/privacy-policy}">Privacy Policy</a></h4>
+
+    <!-- terms and conditions -->
+    <h4><a class="mdl-navigation__link" th:href="@{/terms-and-conditions}">Terms And Conditions</a></h4>
+
     <h2>Delete Account</h2>
     <h3>Attention: All data will be deleted and you will be signed of</h3>
     <form th:action="@{/account/delete}" method="post">
         <input type="submit" value="Delete Account" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"/>
     </form>
+
+
 </div>
 
 </body>
