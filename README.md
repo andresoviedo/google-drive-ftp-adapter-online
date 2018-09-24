@@ -11,14 +11,6 @@ This application has been deployed as a public online service on Internet
 
 https://ftpdrive.andresoviedo.org/
 
-However, Google has disapproved this project and has flagged the domain.  I don't know the reasons.
-
-![alt tag](/docs/google-unauthorization.png)
-
-![alt tag](/docs/google-deceptive-site-ahead.png)
-
-However, you can still deploy the application in your own network with your own API key.
-
 
 # Getting started
 
