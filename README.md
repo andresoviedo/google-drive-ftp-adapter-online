@@ -4,6 +4,16 @@ Connect your FTP Client to Google Drive with this Online Webservice.
 
 ![alt tag](/docs/google-drive-ftp-adapter-online-logo.png)
 
+# News
+
+I'am sorry to announce that Google has not yet approved the **public use** of the API by this APP. They simply gave no reason:
+
+![api usage not approved](/docs/google-unauthorization.png)
+
+However, you can install this application on your own server.
+
+Please don't use the public service until new advice.
+
 
 # Public Service
 
